@@ -1,0 +1,28 @@
+{
+  "name": "rrr",
+  "version": "1.0.0",
+  "description": "REACT READ REST",
+  "keywords": [],
+  "license": "ISC",
+  "author": "SANDEEP N",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router": "^6.30.1",
+    "react-router-dom": "^6.30.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "parcel": "^2.15.4"
+  },
+  "browsersList": [
+    "last 5 versions"
+  ]
+}

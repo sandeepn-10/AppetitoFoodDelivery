@@ -1,0 +1,27 @@
+const heading = <h1 key="h1" id="title">Hello Everyone</h1>
+const heading2 = (<h1 id="subtitle" key="h2">Learning react today</h1>) //this is understood by babel and not browser
+console.log(heading)
+const container = createElement("div", {}, [heading, heading2])
+const FunctionalComponent1 = () => {
+    return (
+    <div>
+        {container}
+        <h1>Funtional Component</h1>
+        <h2>first Component</h2>
+        </div>
+        );
+}
+const FunctionalComponent2 = () => (
+    <div>
+        {/* component composition */}
+        {FunctionalComponent1()}  
+        <h3>Funtional Component 2</h3>
+        <h3>second Component</h3>
+    </div>
+);
+
+
+// createElement bts
+// const heading2 = createElement("h2", {
+//     id:"subtitle"
+// }, 'Learning react today')

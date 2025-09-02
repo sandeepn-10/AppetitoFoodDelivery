@@ -1,0 +1,187 @@
+Webpack, Parcel, Vite - Bundlers
+npm i "-D" parcel , -D here indicates dev  (--savedev also)
+package-lock : will tell the exact version, locks without actually updating, never in gitignore
+package : will have versions with caret,tidle
+integrity field - ensures security(SHa-512...)
+resolved - source url of package
+
+browser source file i.e src to script in html will never accept import in that file, for that we should specify it as type="module"
+
+Parcel
+    - Hot MOdule Replacement(HMR) 
+    - keeps a track of all changes and reloads on changes saved //here parcel,nodemon also does
+    - file Watcher algorithm(c++)
+    - compression
+    - compatibility
+    - caching while development - consistent hashing algorithms
+    - cleaning code
+    - dev and producion build
+    - image optimization
+    - super fast build algorithm
+    - HTTPS on dev
+    - port management
+    - zero config bundler -> no configuration required and it takes care of everything once installed
+    - tree shaking : removing unwanted code
+
+we should put parcel.cache ion gitignore
+
+why is react fast?
+virtual dom...yes not only that---- others like parcel,...
+***transitive dependencies***---indirect dependency relationship between software components(dependency tree)
+
+- consistent hashing 
+- browserslist package
+
+- polyfill -> 
+                replacement of a piece of code that is understandable by the machine
+                mostly for older machines to read modern versions code
+                done by babel
+
+- babel -> used to process and convert the code that can be understood by machine, it is node package eod.
+- babel-plugin-transform-remove-console
+
+- rendering : updating something in DOM
+- re rendering : forming the entire dom tree once again
+hence keys are added to children in react.
+
+
+- 'this' scope on normal and arrow functions
+const obj = {
+    f1 : function (){
+        console.log('f1',this) // obj scope 
+    },
+    f2 : ()=>{
+        console.log('f2',this) // global scope(inherits since it is arrow)
+    }
+
+}
+obj.f1()
+obj.f2()
+
+JSX: is a html like syntax, but "not html inside javascript"
+JSX uses react.createElement behind scenes further into object then in HTML(DOM) - by Babel
+
+Everything is a component in React
+- Functional component - new - nothing but a function
+- Class Based component - old
+> any component name usually starts with capital letter
+ 
+Functional component : 
+    - a jsx code can be used inside a functional component withtin a {}
+    - a functional component can be used inside another functional component by either 
+      like <fc /> or <fc></fc> or {fc()} -> Component Composition
+    - we can write any js code in this
+
+***JSX can only have a single parent element ie only one root, i.e it is wrapped inside a div...and that is why we use 
+   React.Fragment
+    React.Fragment is like an empty tag, even though we don't see anything in elements, the jsx code is wrapped inside it.
+    <React.Fragment> JSX code <React.Fragment/> which is also written like <> JSX code </>
+
+we pass a attr style={} to jsx code tag, in style....
+`
+const style = {bg-color : "red"}
+(<div style={style} ><div/>)
+`
+
+Config Driven UI --> dynamic behaviour of ui
+
+
+- we pass arguments to the func components just as like normal functions
+- we dont use for loop in react , we can use it as a normal js code, but we don't as it is not a good practice.
+- VIRTUAL DOM is a representation of our DOM -- we need it for RECONCILIATION in react
+- RECONCILIATION -> an algorithm that react uses to diff one tree from other(diff algorithm), so decides 
+                    what needs to changed and what shouldn't in trees.
+                    So it re-renders just that part instead of whole tree/screen
+- KEY -> i.e a unique key, helps the react perform this with virtual DOM
+
+State is held by react and not in component
+State is held by where the component sits in tree
+    -> defined in component & stored and managed by react
+    -> if the position of component changes state is not stored
+    -> if same component stays at same state irrespective of props, react holds the state
+        and it doen't depend on the position of counter or condition in JSX, it only sees position in tree
+    -> resetting component at same position is possible if we write it twice with its condition, so for each
+       it creates two different components
+    -> when a key is added , we are telling react to take key into consideration instead of position, this treats as 
+       a new component with new state
+React Fibre 
+    -> Splits rendering into render (reconciliation) and commit (DOM update) phases.
+    -> Breaks work into small units (fibers) that can be paused, resumed, or discarded.
+    -> Enables prioritized rendering, ensuring critical user-visible updates happen first.
+    -> Implements its own virtual call stack in JS, unlike the native one, to allow scheduling.
+
+Named import, default import
+
+
+-----------------------------  React variables && State------------------------------------------------
+react variable, state for every component, usestate hook
+hook - is just a function, with a specific defined takes
+useState - is a hook used to create a state variable, returns a array of which 
+        first value is the local state variable
+        second value is the function that we pass the value to change the variable
+
+React does not just give a normal variable. 
+Instead, it keeps a linked list (queue) of hook states inside a hidden structure for your component.
+When it sees useState(0), it creates a Hook object like:
+{
+  memoizedState: 0,    // the state value
+  queue: null,         // will store updates (setState calls)
+  next: null           // pointer to next hook (if multiple useState)
+}
+
+When you call setCount( count + 1 ):
+React doesn’t instantly change memoizedState.
+Instead, it creates an update object and puts it into the queue of that hook:
+{
+  action: count + 1, // or a function if you use setCount(prev => ...)
+  next: null
+}
+On the next render, React processes the queue of updates.
+***Hooks are just linked lists of state objects, attached to the component’s Fiber.
+    React uses the Fiber tree to manage components and attaches a linked list of hooks to each Fiber. 
+    This allows it to “remember” your state across renders and process updates in a predictable order.
+React updates are async + batched.
+
+useEffect(()={},[])
+    - will be called after the page is rendered
+    - [...], is to pass dependencies, so that uesEffect is called when the given dependency updates
+    - [], if empty it will be called only once i.e the initial rendering.
+    - if nothing is passed as second argument then it'll be called after every render
+
+shimmers, early return
+
+JS expressions work in the jsx and not any js code
+***Never create a component inside a component
+***Never write a useState inside an if-else or a for loop
+
+CreateBrowserRouter , used to create routing in react
+RouterProvider is a component to provide the route paths to react app
+Client Side Routing , Server Side Routing
+
+Outlet gives all the children routes
+UseRouteError hook gives us the information abot the error in route, used in error page
+a package/extension for writing forms with formik
+
+UseParams() hook used to read params of the route, const {id} = useParamS()
+
+Class Based Components : 
+    - a js class ultimately, eg class Profile extends React.Component
+    - we cannot create a class based component without  render()
+    - we use props in class component using this.props
+    - we create variables in constructor of a class component
+        constructor(props){
+            super(props)
+        }
+    - Whenever a class is invoked i.e the constructor is called, we create there the dtate variable
+      since that is the best place
+        this.state = {
+            count:0
+        } we just created a state variable count with value 0
+        WE DO NOT MUTATE STATE DIRECTLY IN CLASS COMPONENTS, WE NEVER DO this.state = ...
+        this.setState({
+            state:1
+        })
+    - componentDidMount() 
+    - componentWillUnmount() is like ngdestroy in angular
+    - componentDidMount can be async but not useEffect, beacause former is not bothered with return value
+         whereas useEffect uses the return function for cleanup.

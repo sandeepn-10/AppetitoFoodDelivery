@@ -1,0 +1,45 @@
+#  Dependencies
+node_modules/
+
+#  Build outputs
+dist/
+build/
+
+#  Parcel cache
+.parcel-cache/
+
+#  Vite cache
+.vite/
+
+#  Webpack cache
+.cache/
+
+#  Testing / coverage
+coverage/
+*.lcov
+
+#  Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+#  Environment variables
+.env
+.env.*.local
+
+#  Editor / OS files
+.DS_Store
+Thumbs.db
+
+#  VS Code
+.vscode/
+
+#  Optional: Mac OS metadata
+*.swp
+
+#  Optional: ESLint/Prettier
+.eslintcache
+
+#  Optional: Typescript build
+*.tsbuildinfo
