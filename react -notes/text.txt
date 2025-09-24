@@ -23,7 +23,7 @@ Parcel
     - zero config bundler -> no configuration required and it takes care of everything once installed
     - tree shaking : removing unwanted code
 
-we should put parcel.cache ion gitignore
+we should put parcel.cache in gitignore
 
 why is react fast?
 virtual dom...yes not only that---- others like parcel,...
@@ -67,7 +67,7 @@ Everything is a component in React
 > any component name usually starts with capital letter
  
 Functional component : 
-    - a jsx code can be used inside a functional component withtin a {}
+    - a jsx code can be used inside a functional component within a {}
     - a functional component can be used inside another functional component by either 
       like <fc /> or <fc></fc> or {fc()} -> Component Composition
     - we can write any js code in this
@@ -172,7 +172,7 @@ Class Based Components :
         constructor(props){
             super(props)
         }
-    - Whenever a class is invoked i.e the constructor is called, we create there the dtate variable
+    - Whenever a class is invoked i.e the constructor is called, we create there the state variable
       since that is the best place
         this.state = {
             count:0

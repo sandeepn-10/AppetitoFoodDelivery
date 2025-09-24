@@ -18,6 +18,12 @@
     border-bottom: 1px solid black;
 }
 
+.nav-items>img{
+  height: 40px;
+  width:40px;
+  padding-left: 20px;
+}
+
 .nav-items {
     list-style-type: none;
     display: flex;

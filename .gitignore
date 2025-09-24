@@ -43,3 +43,6 @@ Thumbs.db
 
 #  Optional: Typescript build
 *.tsbuildinfo
+
+
+package-lock.json

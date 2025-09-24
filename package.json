@@ -20,7 +20,7 @@
   "devDependencies": {
     "@babel/core": "^7.28.0",
     "babel-plugin-transform-remove-console": "^6.9.4",
-    "parcel": "^2.15.4"
+    "parcel": "^2.16.0"
   },
   "browsersList": [
     "last 5 versions"
