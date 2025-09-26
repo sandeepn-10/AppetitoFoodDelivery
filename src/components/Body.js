@@ -1,13 +1,23 @@
 import RestaurantCard from "./RestaurantCard"
-import { restaurants } from "../constants"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { formatRestaurants,filterRestaurants} from "../utils/cardFormats"
 import Shimmers from "./Shimmers"
 import { fetchData } from "../utils/callApi"
-import urls  from '../utils/callUrls'
+import {urls} from '../constants'
+import useOnline from '../utils/useOnline'
 
 const BodyComponent = () => {
+
+    const online = useOnline()
+    if(!online) {
+        return (
+            <>
+                <h1>Check Internet!!!!</h1>
+            </>
+        )
+    }
+
     const [searchText, setSearchText] = useState("")
     const [restaurantsList, setRestaurantsList] = useState([])
     const [filteredRestaurants, setFilteredRestaurants] = useState([])

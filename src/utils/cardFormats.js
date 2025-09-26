@@ -8,7 +8,7 @@ export function formatRestaurants(data) {
         .filter(card => card?.info) // only restaurants (info exists)
         .map(card => {
             const info = card.info;
-            return {
+            const restoCard = {
                 id: info.id,
                 name: info.name,
                 cloudinaryImageId: info.cloudinaryImageId,
@@ -32,6 +32,7 @@ export function formatRestaurants(data) {
                 ratingsDisplayPreference: info.ratingsDisplayPreference,
                 campaignId: info.campaignId
             };
+            return restoCard
         });
 }
 

@@ -185,3 +185,26 @@ Class Based Components :
     - componentWillUnmount() is like ngdestroy in angular
     - componentDidMount can be async but not useEffect, beacause former is not bothered with return value
          whereas useEffect uses the return function for cleanup.
+
+
+Chunking / Dynamic Bundling / Code Splitting / Lazy Loading / On Demand Loading / Dynamic Import
+
+lazy() => import component from 'path'
+upon demand loading -> render -> suspends loading ,  since it doesn't find component
+Suspense - we use this for rendering on demand loading
+             we write this in element of the lazy loading component's path as
+             <Suspense fallback={Shimmer()}><component /></Suspense>
+             - fallback here renders the given jsx until the component loads or is bundled
+
+
+Styling ways : 
+- Normal Native CSS
+- SCSS
+- Inline CSS
+- Component Libraries - Material UI,Chakra UI, Ant, Based
+- Styled Components
+- Tailwind CSS Framework
+   - CSS on the go ( in the same file)
+   - reusability
+   - less bundle size
+   - flexible UI (customizations)

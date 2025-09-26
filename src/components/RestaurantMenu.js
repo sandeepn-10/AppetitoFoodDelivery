@@ -1,33 +1,12 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { menuImageCDN } from "../constants";
+import { urls } from "../constants";
 import Shimmers from "./Shimmers";
 import { Link } from "react-router-dom";
-import urls from "../utils/callUrls";
-import { fetchData } from "../utils/callApi";
-import { formatMenuData } from "../utils/cardFormats";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
   const { id, name } = useParams();
-  const [restaurantMenu, setRestaurantMenu] = useState(null);
-  console.log(id);
-
-  async function menu(id) {
-    const data = await fetchData(
-      urls.restaurantMenuUrl +
-        id +
-        `&catalog_qa=undefined&query=South%20Indian&submitAction=ENTER`
-    );
-    console.log(data);
-    const menuList = formatMenuData(
-      data?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
-    );
-    setRestaurantMenu(menuList);
-  }
-
-  useEffect(() => {
-    menu(id);
-  }, []);
+  const restaurantMenu = useRestaurantMenu(id)
 
   return (
     <div
@@ -44,7 +23,7 @@ const RestaurantMenu = () => {
         ) : (
           restaurantMenu?.map((item, i) => {
             const info = item?.card?.info;
-            const imgSrc = menuImageCDN + info?.imageId;
+            const imgSrc = urls.menuImageCDN + info?.imageId;
             const rating = +info?.ratings?.aggregatedRating.rating;
             return (
               <div className="menu-card" key={i}>
