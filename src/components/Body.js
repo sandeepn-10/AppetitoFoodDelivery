@@ -36,6 +36,11 @@ const BodyComponent = () => {
 
     return (
         <>
+        <div className="center-banner">
+          <h1>
+            Try <Link className="blinking-element" to={'/quicketo'}>Quicketo</Link> Now!!
+          </h1>
+        </div>
             <div className="search-bar">
                 <input type="text" key="searchText" onChange={(e) => {
                     setSearchText(e.target.value)

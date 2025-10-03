@@ -7,6 +7,11 @@ import Error from "./components/Error"
 import Contact from "./components/Contact"
 import RestaurantMenu from "./components/RestaurantMenu"
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom"
+import {lazy, Suspense} from 'react'
+import Shimmers from "./components/Shimmers"
+// import Quicketo from "./components/Quicketo"
+
+const Quicketo = lazy(()=> import ('./components/Quicketo'))
 
 
 
@@ -37,6 +42,12 @@ const appRouter = createBrowserRouter([
             {
                 path: "/contact",
                 element: <Contact />
+            },
+            {
+                path: "/quicketo",
+                element: <Suspense fallback={Shimmers()}>
+                  <Quicketo />
+                </Suspense>
             },
             {
                 path : "/restaurant/:id/:name",
