@@ -99,7 +99,7 @@ State is held by where the component sits in tree
     -> defined in component & stored and managed by react
     -> if the position of component changes state is not stored
     -> if same component stays at same state irrespective of props, react holds the state
-        and it doen't depend on the position of counter or condition in JSX, it only sees position in tree
+        and it doesn't depend on the position of counter or condition in JSX, it only sees position in tree
     -> resetting component at same position is possible if we write it twice with its condition, so for each
        it creates two different components
     -> when a key is added , we are telling react to take key into consideration instead of position, this treats as 
@@ -208,3 +208,11 @@ Styling ways :
    - reusability
    - less bundle size
    - flexible UI (customizations)
+
+
+Props drilling , Lifting up the state, react dev tools
+
+React gives a central space to hold data called context.
+- any component in app can use that data
+- its like a shared state
+create with createContext()
