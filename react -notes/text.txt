@@ -216,3 +216,7 @@ React gives a central space to hold data called context.
 - any component in app can use that data
 - its like a shared state
 create with createContext()
+react router is also using context behind scenes
+    - react dev tools doesn't track name of the context, 
+      so we can give a display name at creation by contextname.displayname 
+    - helps in debugging especially when ther are many
